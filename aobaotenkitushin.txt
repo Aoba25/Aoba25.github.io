@@ -1,0 +1,90 @@
+<h3>LINEに天気予報を知らせてくれるBot</h3>
+<div class="paragraph">
+    <p>
+        Yahoo!天気から特定の地域のURLを指定しておいて、そこから設定した時間ごとに、スクレイピングして天気予報をLINEにお知らせします
+    </p>
+    <div class="paragraph-cell">
+        <h4>友達登録から天気予報を受信するまでのショート動画です！</h4>
+        <p>下の画像をクリックしてください<br />YouTubeShortsに飛びます</p>
+        <a href="https://youtube.com/shorts/BldqRet9Ot8"><img src="AobaOtenkiTushinShort.png" id="short"></a>
+    </div>
+    <div class="paragraph-cell">
+        <h4>使用スキル</h4>
+        <ul>
+            <li>Python</li>
+            <li>LINE Messaging API</li>
+            <li>GCP</li>
+        </ul>
+    </div>
+    <div class="paragraph-cell">
+        <h4>使用しているライブラリ</h4>
+        <ul>
+            <li>Beautiful Soup</li>
+            <li>requests</li>
+            <li>Flask</li>
+            <li>line-bot-sdk</li>
+        </ul>
+    </div>
+    <div class="paragraph-cell">
+        <h4>Aobaお天気通信の公式LINEのQRコードです！</h4>
+        <img src="LINE_QRcode.png" alt="line.me/R/ti/p/@180sesex">
+        <p>
+        試しに、お友達登録をしてみて下さい！
+        </p>
+        <p>
+        動画では、51分に通知が来ていますが、就職活動の期間は、10時から20時の毎時7分頃にお天気の一斉通知をしています。
+        <br />ただし、私の地方のお天気だけです。ごめんなさい。
+        </p>
+        <p>
+        公式アカウントの友達登録を削除する方法は、次の通りです。
+            <ol>
+                <li>
+                <span class="title">ブロックする</span><br />
+                削除したい公式アカウントを開き、上段右側にあるハンバーガーメニューからブロックをタップ
+                </li>
+                <li>
+                <span class="title">トーク履歴を削除</span><br />
+                画面下のトークをタップし、トークリストから削除したい公式アカウントを長押しして、削除をタップ
+                </li>
+                <li>
+                <span class="title">アカウント削除</span><br />
+                ホーム画面の
+                    <span>設定 ⇒ 友だち ⇒ ブロックリスト</span>
+                から、編集をタップし、削除を選んでください。
+                </li>
+            </ol>
+        </p>
+    </div>
+    <div class="paragraph-cell">
+        <h4>工夫した点</h4>
+        <p>
+            　全てテキストにすることで、メールに貼り付けることが出来るようにしました。
+        </p>
+        <p>
+            
+        </p>
+    </div>
+    <div class="paragraph-cell">
+        <h4>大変だったこと</h4>
+        <p>
+            　ライブラリのドキュメントが整備されておらず、検索してもプログラミング当時はネットで解説している人がいなかったため、参考になる文章がなかった。<br />
+            　そのため、ライブラリのソースを読んでコメントから使い方を読み解きました。
+        </p>
+        <p>
+        </p>
+        <p></p>
+    </div>
+    <div class="paragraph-cell">
+        <h4>今後の展望</h4>
+        <p>
+            　個人的にはこれで十分なのですが、特定の地域だけでなく、選択された地域の天気をLINEに通知できるようにした方がいいかな…？と思ったりもしてます。
+        </p>
+        <p>
+            LINEのアイコンは自作の適当（描いた当時はいいと思っていた）アイコンなので、もう少し画力をあげていい感じのアイコンを表示させたいです。
+        </p>
+    </div>
+    <div class="paragraph-cell">
+        <h4></h4>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+<h3>ランダムに番号を選んでくれるスクリプト</h3>
+<div class="paragraph">
+    <p>
+        問題集の復習時に、指定された範囲内でランダムに問題番号を選んでくれるスクリプト
+    </p>
+    <div class="paragraph-cell">
+        <h4>使用技術</h4>
+        <ul>
+            <li>Javascript</li>
+            <li>HTML&CSS</li>
+        </ul>
+    </div>
+    <div class="paragraph-cell">
+        <a href="確認テストfix1.html">作成した当時のhtmlファイル</a>
+    </div>
+    <div class="paragraph-cell">
+        <h4>工夫した点</h4>
+        <p>
+            問題集の全ての範囲の問題番号が選出されることがないように、自分が復習したい範囲だけを選べるようにしました。
+        </p>
+        <p>
+            また、解く問題数や問題番号をわかりやすく表示するようにしました。
+        </p>
+        <p></p>
+    </div>
+    <div class="paragraph-cell">
+        <h4>大変だったこと</h4>
+        <p>
+            初めて作った作品なので、そもそもプログラミングの基礎が分かっていなかったのが、大変でした。
+        </p>
+    </div>
+    <div class="paragraph-cell">
+        <h4>今後の展望</h4>
+        <p>
+            今回のポートフォリオ作成でHTMLとCSSを前より使いこなすことができるようになったので、見た目をよりデザイン性の高い作品に仕上げたいと考えています。
+        </p>
+    </div>
+    <div class="paragraph-cell">
+        <h4></h4>
+    </div>
+</div>

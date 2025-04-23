@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<style>
+		//table td:nth-of-type(3){text-align: left;}
+		table td{text-align: right;};
+	</style>
+	<style>
+		/* https://css-tricks.com/old-timey-terminal-styling/
+		 * Copyright (c) 2020 by Chris Coyier (https://codepen.io/chriscoyier/pen/GBbOJd)
+		 * Released under the MIT license
+		 * http://opensource.org/licenses/mit-license.php
+		 */
+		body {
+			background-color: black;
+			background-image: radial-gradient(
+				rgba(0, 150, 0, 0.75), black 120%
+			);
+			height: 100vh;
+			
+			margin: 0;
+			//overflow: hidden;
+			padding: 2rem;
+			
+			color: white;
+			font: 1.3rem Inconsolata, monospace;
+			
+			text-shadow: 0 0 5px #C8C8C8;
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: repeating-linear-gradient(
+					0deg,
+					rgba(black, 0.15),
+					rgba(black, 0.15) 1px,
+					transparent 1px,
+					transparent 2px
+				);
+				pointer-events: none;
+			}
+		}
+		::selection {
+			background: #0080FF;
+			text-shadow: none;
+		}
+		pre {
+			margin: 0;
+		}
+	</style>
+	<style>
+		/*
+		 * Copyright (c) 2020 by a.yamasaki (https://codepen.io/yamasaki0930/pen/YegYxd)
+		 * Released under the MIT license
+		 * http://opensource.org/licenses/mit-license.php
+		 */
+		.btn-shine {
+			color: #FFF;
+			display: inline-block;
+			/*font-size: 16px;*/
+			font-weight: bold;
+			line-height: 45px;
+			width: 200px;
+			position: relative;
+			text-decoration: none;
+			text-transform: uppercase;
+			/* border: 1px solid transparent;
+			outline: 1px solid;
+			outline-color: rgba(255, 255, 255, 0.5);
+			outline-offset: 0px;*/
+			/*text-shadow: none;*/
+			outline: 1px solid transparent;
+			border: 1px solid;
+			border-color: rgba(255, 255, 255, 0.5);
+			border-radius: 8px;
+			transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+			text-align: center;
+		}
+		.btn-shine:hover {
+			border-color: #FFF;
+			box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+			/*outline-color: transparent;*/
+			outline-offset: 12px;
+			text-shadow: 2px 2px 3px #000;
+		}
+	</style>
+	<title>【確認テスト】とびとびに出題します【確認テスト】</title>
+</head>
+<body>
+	<form name="inputBoxes">
+		<p>
+			先ず、出題する問題の範囲をセット<br>
+			<input type="number" name="startNum" value="1" maxlength="3">
+			問目から<br>
+			<input type="number" name="endNum" value="100" maxlength="3">
+			問目まで
+		</p>
+		<p>
+			次に、いくつ毎に問題を選ぶかセット<br>
+			<input type="number" name="incNum" value="4" maxlength="3">
+			つ毎
+		</p>
+		<p>
+			最後にボタンを押して表示します<br>
+			<div class="btn-shine" type="button" value="問題を表示" onclick="clickBtn1()">問題を表示する</div>
+		</p>
+	</form>
+	<p>
+		<table id="table1" border="1">
+			<tr>
+				<th>Q通算問題数:</th>
+				<th>使用する問題の番号</th>
+				<th>進んだ問題数</th>
+			</tr>
+		</table>
+	</p>
+	<p id="Questions">使用する問題の番号:</br>
+	</p>
+	<p>
+		最後で問題数が合わなくなったりしたら、適当にやって下さい😁
+	</p>
+	<script>
+		var ibox = document.inputBoxes;
+		var t1 = document.getElementById( 'table1' );
+		
+		var q;
+		var baseNum;
+		var questions = [];
+
+		//function makeString(q, r, b) {
+		//	return 'Q' + ( q + 1 ) + ': ' + ( r + b ) + ' ( = ' + r + ' + ' + b + ' )';
+		//}
+		function makeRow(q, r, b) {
+			var tRow = document.createElement( 'tr' );
+			var ar = [ q, r, b ];
+			for ( var i = 0, l = ar.length; i < l; ++i ) {
+				var td = document.createElement( 'td' );
+				td.innerHTML =  ar[i];
+				tRow.appendChild( td );
+			}
+			return tRow;
+		}
+		
+		
+		
+		function getRandomIntInclusive(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		
+		function add1loop( question, inc, bass, reach ) {
+			var randNum = getRandomIntInclusive(1, inc);
+			
+			var row = makeRow(
+				'Q' + question + ':',
+				randNum + bass,
+				reach
+			);
+			t1.appendChild( row );
+			questions.push( randNum + bass );
+			
+
+			//printLine.innerHTML += makeString(q, randNum, baseNum) + '<br>';
+			
+			//var string = makeString(q, randNum, baseNum);
+			//printLine.appendChild( document.createTextNode( string ) );
+			//printLine.appendChild( document.createElement( 'br' ) );
+		}
+		
+		function clickBtn1() {
+			var increacingNum = parseInt( ibox.incNum.value );
+			//if ( baseNum == 0 ) {
+			//	baseNum = parseInt( ibox.startNum.value ) - 1;
+			//}
+
+			// reset 通算質問数
+			q = 0;
+			// reset 進んだ問題数
+			baseNum = 0;
+			questions = [];
+
+			// reset table 追加した最初の行(Q1の行)がなくなるまで、下から削除
+			while ( t1.rows.length > 1 ) {
+				t1.deleteRow(-1);
+			}
+			
+
+			var reachedNum;
+			var endNum = parseInt( ibox.endNum.value );
+			while ( baseNum < endNum ) {
+				reachedNum = baseNum + increacingNum;
+				add1loop( ++q, increacingNum, baseNum, reachedNum );
+				baseNum = reachedNum;
+			}
+
+			var qEle = document.getElementById( 'Questions' );
+			var qStr = questions.join( ", " );
+			qEle.appendChild( document.createTextNode( qStr ) );
+
+		}
+	</script>
+</body>
+</html>

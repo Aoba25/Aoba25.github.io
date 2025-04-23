@@ -19,10 +19,12 @@
     <div class="paragraph-cell">
         <h4>使用しているライブラリ</h4>
         <ul>
-            <li>Beautiful Soup</li>
-            <li>requests</li>
-            <li>Flask</li>
             <li>line-bot-sdk</li>
+            <li>requests</li>
+            <li>Beautiful Soup</li>
+            <li>pandas</li>
+            <li>wcwidth</li>
+            <li>tabulate</li>
         </ul>
     </div>
     <div class="paragraph-cell">

@@ -28,73 +28,79 @@ window.addEventListener("scroll", () => {
 
 
 
-// Vanilla JS
+// Works Vanilla JS
+document.addEventListener("DOMContentLoaded", () => {
+    const works = [
+        "aobaotenkitushin",
+        "problem-selector",
+    ];
+    works.forEach(work => {
+        const work_id = "#" + work;
+        const work_url = "/" + work + ".txt";
+        const btn_ele = document.querySelector(work_id + "-btn");
+        
+        btn_ele.addEventListener("click", () => {
+            const work_ele = document.querySelector(work_id);
+
+            // enlarge the clicked work
+            work_ele.classList.add("enlarged");
+            
+            // rewrite the content of the clicked work
+            fetch(work_url)
+            .then((response) => {
+                if (!response.ok) {
+                    const message =
+                        `HTTP error status: ${response.status}\n` +
+                        ` when accessing: ${work_url}`;
+                    throw new Error(message);
+                }
+                return response.text();
+            })
+            .then(text => {
+                work_ele.innerHTML = text;
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+            });
+        }, false);
+    });
+});
+// Works Vanilla JS
+
 /*
-$(function(){
-    const work_name = "aobaotenkitushin";
-    const work_id = "#" + work_name;
-    const work_url = "/" + work_name + ".txt";
-    
-    document.querySelector(work_id+"-btn").addEventListener("click", function(event) {
-        const ele = document.querySelector(work_id);
-        ele.style.width = "100%";
-        ele.style.backgroundColor = "white";
-        
-        fetch(work_url)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            ele.innerHtml = data;
-        })
-        .catch(error => {
-            console.log("Error when accessing: " + work_url);
+// Works jQuery
+$(() => {
+    const works = [
+        "aobaotenkitushin",
+        "problem-selector",
+    ];
+    works.forEach(work => {
+        const work_id = "#" + work;
+        const work_url = "/" + work + ".txt";
+
+        $(work_id + "-btn").click(() => {
+            // enlarge the clicked work
+            // bad script
+            // $(work_id).css("width", "100%");
+            // $(work_id).css("background-color", "rgb(107, 142, 35, 0.5)");
+            // $(work_id).css("transition", "all 2s");
+            // good script
+            $(work_id).addClass("enlarged");
+
+            // rewrite the content of the clicked work
+            $.ajax({
+                type: 'GET',
+                url: work_url,
+            })
+            .done(data => {
+                $(work_id).html(data);
+            })
+            .fail(() => {
+                alert("Error when accessing: " + work_url);
+            });
         });
-    }, false);
+    });
+});
+// Works jQuery
 */
-
-
-
-// jQuery
-$(function(){
-    const work_name = "aobaotenkitushin";
-    const work_id = "#" + work_name;
-    const work_url = "/" + work_name + ".txt";
-    
-    $(work_id+"-btn").click(function() {
-        $(work_id).addClass("enlarged");
-        $.ajax({
-            type:'GET',
-            url: work_url,
-        })
-        .done(function(data){
-            $(work_id).html(data);
-        })
-        .fail(function(){
-            alert("Error when accessing: " + work_url);
-        })
-    });
-});
-
-
-$(function(){
-    const work_name = "problem-selector";
-    const work_id = "#" + work_name;
-    const work_url = "/" + work_name + ".txt";
-    $(work_id+"-btn").click(function() {
-        $(work_id).css("width", "100%");
-        $(work_id).css("background-color", "rgb(107, 142, 35, 0.5)");
-        $(work_id).css("transition", "all 2s");
-        
-        $.ajax({
-            type:'GET',
-            url: work_url,
-        })
-        .done(function(data){
-            $(work_id).html(data);
-        })
-        .fail(function(){
-            alert("Error when accessing: " + work_url);
-        })
-    });
-});
